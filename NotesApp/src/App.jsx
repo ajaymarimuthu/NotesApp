@@ -1,6 +1,6 @@
  
 import './App.css'
-import NotesApp from './components/NotesApp/NotesAPp'
+import NotesApp from './components/NotesApp/NotesApp'
 
 function App() {
   

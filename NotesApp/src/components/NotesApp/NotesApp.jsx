@@ -9,32 +9,57 @@ function NotesApp() {
     const [notes, setNotes] = useState([])
 
     const addNewNote = (newNote) => {
+        
+        // console.log("hii");
         const newNotes = [...notes, newNote];
         newNotes.filter((note) => !note.id && (note.id = uuidv4()))
 
         setNotes(newNotes)
 
-        console.log(newNotes);
+        // console.log(newNote.id+" ---this is id");
 
     }
 
 
+    // console.log(notes);
+
+    const deleteNote= (id) =>{
+        const newNotes=notes.filter((note)=>  note.id!==id );
+        setNotes(newNotes)
+    }
+
     return (
         <div>
-            <Button className='success'
-                variant="success"
+            <Button 
+                
                 onClick={addNewNote}
-            >+NewNotasdases</Button>
+             
+            >+NewNote</Button>
+{/* 
+            <button
+            onClick={addNewNote}
+            >
+                +Newnote
+            </button> */}
 
-            <div className="container">
-                {notes.map((note) => {
-                    <NewNote note={note} />
-                })}
+
+            {notes.map((note) =>{
+
+                return <NewNote note={note} key={note.id} deleteNote={deleteNote}/>
+
+            } )}
 
 
+            {/* {notes.map((n)=>{
+                console.log(n.id);
 
-            </div>
 
+                //this is to print all the id's of the notes
+
+
+            })} */}
+  
+               
         </div>
     )
 }
